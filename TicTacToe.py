@@ -168,6 +168,7 @@ class TicTacToe:
     def check_win(self):
         board = self.grid_index
         size = self.grid_size
+        ind = size * size
 
         for row in range(size):
             for col in range(size - 3):
@@ -188,6 +189,15 @@ class TicTacToe:
             for col in range(size - 3):
                 if board[row][col] == board[row - 1][col + 1] == board[row - 2][col + 2] == board[row - 3][col + 3] and board[row][col] != 'E':
                     self.canvas.create_text(1000,600,text = f"{board [row][col]} wins!",fill = "white", font = ("Helvetica", 48), tag = "grid")
+
+        for row in range(size):
+            for col in range(size):
+                if board[row][col] != 'E':
+                    ind -= 1
+
+        if ind == 0:
+            self.canvas.create_text(1000,600,text = "Draw!",fill = "white", font = ("Helvetica", 48), tag = "grid")
+            ind = size*size
                     
 
         
